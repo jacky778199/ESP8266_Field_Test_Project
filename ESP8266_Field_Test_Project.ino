@@ -1,5 +1,9 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266WebServer.h>
+#include <Wire.h>  
+#include "SSD1306Wire.h"
+
+SSD1306Wire  display(0x3c, 5, 4);
 
 ESP8266WebServer server(80);
 
@@ -12,7 +16,7 @@ int statusCode;
 
 void setup() {
 	Serial.begin(9600);
-
+	display.init();
 	delay(10);
 	Serial.println("Startup AP");
 
@@ -112,7 +116,7 @@ void createWebServer(int webtype)
 			
 		//	content += "<br/ > <a href='/status'> Status page </a> ";
 			content += "</b> <br/ > <input type='button' onclick ='history.back()' value ='back'></input> ";
-			content += " <br/ > <a href='/'> Start page </a> ";
+			content += " <br/ > <br/ > <a href='/'> Start page </a> ";
 			server.send(200, "text/html", content);
 		});
 
@@ -122,6 +126,24 @@ void createWebServer(int webtype)
 
 }
 
+void drawFontFaceDemo() {
+	// Font Demo1
+	// create more fonts at http://oleddisplay.squix.ch/
+	display.setTextAlignment(TEXT_ALIGN_LEFT);
+	display.setFont(ArialMT_Plain_16);
+	display.drawString(0, 0, "Mode=");	display.drawString(50, 0, set_mode);
+//	display.setFont(ArialMT_Plain_10);
+	display.drawString(0, 14, "Freq="); display.drawString(50, 14, set_freq); display.drawString(90, 14, "Mhz");
+//	display.setFont(ArialMT_Plain_10);
+	display.drawString(0, 28, "SF="); display.drawString(50, 28, set_sf);
+	display.drawString(0, 42, "Data length="); display.drawString(90, 42, data_length);
+}
+
 void loop() {
 	server.handleClient();
+
+	display.clear();
+	drawFontFaceDemo();
+	display.display();
 }
+

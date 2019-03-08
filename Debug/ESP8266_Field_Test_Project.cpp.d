@@ -125,4 +125,8 @@ C:\Users\Jacky\AppData\Local\Temp\VMBuilds\ESP8266_Field_Test_Project\esp8266_ge
  C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WiFi\src/WiFiClientSecureAxTLS.h \
  C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WiFi\src/include/ssl.h \
  C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WebServer\src/ESP8266WebServer.h \
- C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WebServer\src/detail/RequestHandler.h
+ C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WebServer\src/detail/RequestHandler.h \
+ C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\Wire/Wire.h \
+ C:\Users\Jacky\Documents\Arduino\libraries\esp8266-oled-ssd1306-master\src/SSD1306Wire.h \
+ C:\Users\Jacky\Documents\Arduino\libraries\esp8266-oled-ssd1306-master\src/OLEDDisplay.h \
+ C:\Users\Jacky\Documents\Arduino\libraries\esp8266-oled-ssd1306-master\src/OLEDDisplayFonts.h
