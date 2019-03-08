@@ -2,10 +2,11 @@
 #include <ESP8266WebServer.h>
 #include <Wire.h>  
 #include "SSD1306Wire.h"
-
+#include "FRONT_END.h"  
 SSD1306Wire  display(0x3c, 5, 4);
 
 ESP8266WebServer server(80);
+FRONT_END Front_end;
 
 const char* ssid = "esp8266_OLED";
 const char* passphrase = "12345678";
@@ -50,20 +51,20 @@ void createWebServer(int webtype)
 {
 	if (webtype == 1) {
 		server.on("/", []() {
-			IPAddress ip = WiFi.softAPIP();
-			String ipStr = String(ip[0]) + '.' + String(ip[1]) + '.' + String(ip[2]) + '.' + String(ip[3]);
-			content = "<!DOCTYPE HTML>\r\n<html>Hello from Field test tool at ";
-			content += ipStr;
-			content += "<hr>";
-			content += "<fieldset> <legend> Set RF Parameter </legend> ";
-			content += "<form method='get' action='status'>   ";
-			content += "<label>Freq: </label> <input type=''text' name='freq' size='5'> Mhz<br/ > ";
-			content += "<label>SF= </label> <select name='sf'> <option value='12' selected='selected'>SF12  <option value='11'>SF11 <option value='10'>SF10 <option value='9'>SF9 <option value='8'>SF8 <option value='7'>SF7 <option value='6'>SF6 </option> </select> <br/ > ";
-			content += "<label>Mode= </label> <input type='radio' name='mode' value='gw' checked='checked' /> Gateway <input type='radio' name='mode' value='node' /> Node <br/ >  ";
-			content += "<input type = 'submit'></form>  ";
-			content += "</fieldset> </html>  ";
-
-			server.send(200, "text/html", content);
+			//IPAddress ip = WiFi.softAPIP();
+			//String ipStr = String(ip[0]) + '.' + String(ip[1]) + '.' + String(ip[2]) + '.' + String(ip[3]);
+			//content = "<!DOCTYPE HTML>\r\n<html>Hello from Field test tool at ";
+			//content += ipStr;
+			//content += "<hr>";
+			//content += "<fieldset> <legend> Set RF Parameter </legend> ";
+			//content += "<form method='get' action='status'>   ";
+			//content += "<label>Freq: </label> <input type=''text' name='freq' size='5'> Mhz<br/ > ";
+			//content += "<label>SF= </label> <select name='sf'> <option value='12' selected='selected'>SF12  <option value='11'>SF11 <option value='10'>SF10 <option value='9'>SF9 <option value='8'>SF8 <option value='7'>SF7 <option value='6'>SF6 </option> </select> <br/ > ";
+			//content += "<label>Mode= </label> <input type='radio' name='mode' value='gw' checked='checked' /> Gateway <input type='radio' name='mode' value='node' /> Node <br/ >  ";
+			//content += "<input type = 'submit'></form>  ";
+			//content += "</fieldset> </html>  ";
+			
+			server.send(200, "text/html", Front_end.Home_page() );
 		});
 		server.on("/status", []() {
 			set_freq = server.arg("freq");

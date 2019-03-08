@@ -11,7 +11,7 @@ public:
 
         ~FRONT_END ();
 
-        String Home_page();
+        char * Home_page();
 
         String Gateway_mode();
 
