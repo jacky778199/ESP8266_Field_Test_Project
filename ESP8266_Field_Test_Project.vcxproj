@@ -66,7 +66,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\ESP8266_Field_Test_Project;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WiFi\src;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WebServer\src;$(ProjectDir)..\..\Arduino\libraries;C:\Users\Jacky\Documents\Arduino\libraries;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\avr;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\libb64;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\spiffs;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\umm_malloc;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\variants\generic;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\lwip2\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\libc\xtensa-lx106-elf\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\xtensa-lx106-elf\include\c++\4.8.2;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\xtensa-lx106-elf\include\c++\4.8.2\xtensa-lx106-elf;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\xtensa-lx106-elf\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\lib\gcc\xtensa-lx106-elf\4.8.2\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\ESP8266_Field_Test_Project;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WiFi\src;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\ESP8266WebServer\src;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries\Wire;C:\Users\Jacky\Documents\Arduino\libraries\esp8266-oled-ssd1306-master\src;$(ProjectDir)..\..\Arduino\libraries;C:\Users\Jacky\Documents\Arduino\libraries;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\libraries;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\avr;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\libb64;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\spiffs;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\cores\esp8266\umm_malloc;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\variants\generic;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\lwip2\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\libc\xtensa-lx106-elf\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\xtensa-lx106-elf\include\c++\4.8.2;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\xtensa-lx106-elf\include\c++\4.8.2\xtensa-lx106-elf;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\xtensa-lx106-elf\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\tools\xtensa-lx106-elf-gcc\1.20.0-26-gb404fb9-2\lib\gcc\xtensa-lx106-elf\4.8.2\include;C:\Users\Jacky\AppData\Local\arduino15\packages\esp8266\hardware\esp8266\2.4.2\tools\sdk\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <ForcedIncludeFiles>$(ProjectDir)__vm\.ESP8266_Field_Test_Project.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
       <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
       <PreprocessorDefinitions>__ESP8266_ESp8266__;__ESP8266_ESP8266__;__ets__;ICACHE_FLASH;F_CPU=80000000L;LWIP_OPEN_SRC;TCP_MSS=536;ARDUINO=10805;ARDUINO_ESP8266_GENERIC;ARDUINO_ARCH_ESP8266;LED_BUILTIN=2;ESP8266;__cplusplus=201103L;_VMICRO_INTELLISENSE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -84,7 +84,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FRONT_END.h" />
     <ClInclude Include="__vm\.ESP8266_Field_Test_Project.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FRONT_END.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>
@@ -92,4 +96,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.port="COM4" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

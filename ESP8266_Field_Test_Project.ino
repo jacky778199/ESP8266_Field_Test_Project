@@ -121,7 +121,32 @@ void createWebServer(int webtype)
 			server.send(200, "text/html", content);
 		});
 
+		server.on("/node", []() {
+			
+			content = "<< Node Mode >> Parameter <hr> <br/> Freq= ";
+			content += set_freq;
+			content += "Mhz <br/ > SF= ";
+			content += set_sf;
+			content += "  Mode= ";
+			content += set_mode;
+			content += "<form method='get' action='Node-status'>   ";
+			content += "<br/> <label>Data Length = </label> <select name = 'data_length'> <option value = '100' selected = 'selected'>100 Bytes  <option value = '1'>1 Bytes <option value = '5'>5 Bytes <option value = '10'>10 Bytes <option value = '50'>50 Bytes <option value = '150'>150 Bytes <option value = '200'>200 Bytes <option value = '241'>241 Bytes </option> </select> <br/> ";
+			content += "<input type = 'submit'></form>  ";
+			content += "<br/ > <a href='/'> Setup page </a> ";
+			server.send(200, "text/html", content);
+		});
+		server.on("/gateway", []() {
 
+			content = "<< Gateway Mode >> Parameter <hr> <br/> Freq= ";
+			content += set_freq;
+			content += "Mhz <br/ > SF= ";
+			content += set_sf;
+			content += "  Mode= ";
+			content += set_mode;
+			content += "<br/ > <input type='button' onclick ='history.back()' value ='back'></input> ";
+
+			server.send(200, "text/html", content);
+		});
 
 	}
 

@@ -13,9 +13,9 @@ public:
 
         char * Home_page();
 
-        String Gateway_mode();
+		char* Gateway_mode();
 
-        String Node_mode();
+		char* Node_mode();
 
 };
 
