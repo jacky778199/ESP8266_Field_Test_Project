@@ -11,7 +11,7 @@ public:
 
         ~FRONT_END ();
 
-        char * Home_page();
+        char* Home_page();
 
 		char* Gateway_mode();
 

@@ -12,7 +12,8 @@ const char* ssid = "esp8266_OLED";
 const char* passphrase = "12345678";
 String st;
 String content;
-String data_length, set_freq, set_sf , set_mode;
+String data_length, set_gw_freq, set_gw_sf , set_gw_mode, set_gw_bw, set_gw_length;
+String set_freq, set_sf, set_mode;
 int statusCode;
 
 void setup() {
@@ -104,20 +105,13 @@ void createWebServer(int webtype)
 			server.send(statusCode, "text/html", content);
 		});
 
-		server.on("/Node-status", []() {
-			data_length = server.arg("data_length");
-			content = "<< Node Mode >> Parameter <hr> <br/> Freq= ";
-			content += set_freq;
-			content += "Mhz <br/ > SF= ";
-			content += set_sf;
-			content += "  Mode= ";
-			content += set_mode;
-			content += "<b>  Data length= ";
-			content += data_length;
-			
-		//	content += "<br/ > <a href='/status'> Status page </a> ";
-			content += "</b> <br/ > <input type='button' onclick ='history.back()' value ='back'></input> ";
-			content += " <br/ > <br/ > <a href='/'> Start page </a> ";
+		server.on("/parse_data", []() {
+			set_gw_freq = server.arg("GW_Freq");
+			set_gw_sf = server.arg("GW_SF");
+			set_gw_bw = server.arg("GW_BW");
+			set_gw_length = server.arg("GW_Length");
+			content = "Gateway Freq= ";
+			content += set_gw_freq;
 			server.send(200, "text/html", content);
 		});
 
@@ -137,15 +131,7 @@ void createWebServer(int webtype)
 		});
 		server.on("/gateway", []() {
 
-			content = "<< Gateway Mode >> Parameter <hr> <br/> Freq= ";
-			content += set_freq;
-			content += "Mhz <br/ > SF= ";
-			content += set_sf;
-			content += "  Mode= ";
-			content += set_mode;
-			content += "<br/ > <input type='button' onclick ='history.back()' value ='back'></input> ";
-
-			server.send(200, "text/html", content);
+			server.send(200, "text/html", Front_end.Gateway_mode() );
 		});
 
 	}
@@ -157,12 +143,12 @@ void drawFontFaceDemo() {
 	// create more fonts at http://oleddisplay.squix.ch/
 	display.setTextAlignment(TEXT_ALIGN_LEFT);
 	display.setFont(ArialMT_Plain_16);
-	display.drawString(0, 0, "Mode=");	display.drawString(50, 0, set_mode);
+	display.drawString(0, 0, "BW=");	display.drawString(50, 0, set_gw_bw);
 //	display.setFont(ArialMT_Plain_10);
-	display.drawString(0, 14, "Freq="); display.drawString(50, 14, set_freq); display.drawString(90, 14, "Mhz");
+	display.drawString(0, 14, "Freq="); display.drawString(50, 14, set_gw_freq); display.drawString(90, 14, "Mhz");
 //	display.setFont(ArialMT_Plain_10);
-	display.drawString(0, 28, "SF="); display.drawString(50, 28, set_sf);
-	display.drawString(0, 42, "Data length="); display.drawString(90, 42, data_length);
+	display.drawString(0, 28, "SF="); display.drawString(50, 28, set_gw_sf);
+	display.drawString(0, 42, "Data length="); display.drawString(90, 42, set_gw_length);
 }
 
 void loop() {
