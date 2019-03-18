@@ -14,6 +14,7 @@ String st;
 String content;
 String data_length, set_gw_freq, set_gw_sf , set_gw_mode, set_gw_bw, set_gw_length;
 String set_freq, set_sf, set_mode;
+String set_node_freq, set_node_sf, set_node_mode, set_node_bw, set_node_length;
 int statusCode;
 
 void setup() {
@@ -52,64 +53,20 @@ void createWebServer(int webtype)
 {
 	if (webtype == 1) {
 		server.on("/", []() {
-			//IPAddress ip = WiFi.softAPIP();
-			//String ipStr = String(ip[0]) + '.' + String(ip[1]) + '.' + String(ip[2]) + '.' + String(ip[3]);
-			//content = "<!DOCTYPE HTML>\r\n<html>Hello from Field test tool at ";
-			//content += ipStr;
-			//content += "<hr>";
-			//content += "<fieldset> <legend> Set RF Parameter </legend> ";
-			//content += "<form method='get' action='status'>   ";
-			//content += "<label>Freq: </label> <input type=''text' name='freq' size='5'> Mhz<br/ > ";
-			//content += "<label>SF= </label> <select name='sf'> <option value='12' selected='selected'>SF12  <option value='11'>SF11 <option value='10'>SF10 <option value='9'>SF9 <option value='8'>SF8 <option value='7'>SF7 <option value='6'>SF6 </option> </select> <br/ > ";
-			//content += "<label>Mode= </label> <input type='radio' name='mode' value='gw' checked='checked' /> Gateway <input type='radio' name='mode' value='node' /> Node <br/ >  ";
-			//content += "<input type = 'submit'></form>  ";
-			//content += "</fieldset> </html>  ";
-			
 			server.send(200, "text/html", Front_end.Home_page() );
-		});
-		server.on("/status", []() {
-			set_freq = server.arg("freq");
-			set_sf = server.arg("sf");
-			set_mode = server.arg("mode");
-			if (set_mode=="gw" )
-			{
-				content = "<< Gateway Mode >> Parameter <hr> <br/> Freq= ";
-				content += set_freq ;
-				content += "Mhz <br/ > SF= ";
-				content += set_sf ;
-				content += "  Mode= ";
-				content += set_mode ;
-				content += "<br/ > <input type='button' onclick ='history.back()' value ='back'></input> ";
-				statusCode = 200;
-			}
-			else if (set_mode == "node")
-			{
-				content = "<< Node Mode >> Parameter <hr> <br/> Freq= ";
-				content += set_freq;
-				content += "Mhz <br/ > SF= ";
-				content += set_sf;
-				content += "  Mode= ";
-				content += set_mode;
-				content += "<form method='get' action='Node-status'>   ";
-				content += "<br/> <label>Data Length = </label> <select name = 'data_length'> <option value = '100' selected = 'selected'>100 Bytes  <option value = '1'>1 Bytes <option value = '5'>5 Bytes <option value = '10'>10 Bytes <option value = '50'>50 Bytes <option value = '150'>150 Bytes <option value = '200'>200 Bytes <option value = '241'>241 Bytes </option> </select> <br/> ";
-				content += "<input type = 'submit'></form>  ";
-				content += "<br/ > <a href='/'> Setup page </a> ";
-				
-				statusCode = 200;
-			}
-			else {
-				content = "{\"Error\":\"404 not found\"}";
-				statusCode = 404;
-				Serial.println("Sending 404");
-			}
-			server.send(statusCode, "text/html", content);
 		});
 
 		server.on("/parse_data", []() {
 			set_gw_freq = server.arg("GW_Freq");
 			set_gw_sf = server.arg("GW_SF");
 			set_gw_bw = server.arg("GW_BW");
-			set_gw_length = server.arg("GW_Length");
+			set_gw_length = server.arg("GW_Length"); //Gateway ¨S¦³Length!!
+			
+			set_node_freq = server.arg("Node_Freq");
+			set_node_sf = server.arg("Node_SF");
+			set_node_bw = server.arg("Node_BW");
+			set_node_length = server.arg("Data_Length");
+
 			content = "Gateway Freq= ";
 			content += set_gw_freq;
 			server.send(200, "text/html", content);
@@ -117,17 +74,7 @@ void createWebServer(int webtype)
 
 		server.on("/node", []() {
 			
-			content = "<< Node Mode >> Parameter <hr> <br/> Freq= ";
-			content += set_freq;
-			content += "Mhz <br/ > SF= ";
-			content += set_sf;
-			content += "  Mode= ";
-			content += set_mode;
-			content += "<form method='get' action='Node-status'>   ";
-			content += "<br/> <label>Data Length = </label> <select name = 'data_length'> <option value = '100' selected = 'selected'>100 Bytes  <option value = '1'>1 Bytes <option value = '5'>5 Bytes <option value = '10'>10 Bytes <option value = '50'>50 Bytes <option value = '150'>150 Bytes <option value = '200'>200 Bytes <option value = '241'>241 Bytes </option> </select> <br/> ";
-			content += "<input type = 'submit'></form>  ";
-			content += "<br/ > <a href='/'> Setup page </a> ";
-			server.send(200, "text/html", content);
+			server.send(200, "text/html", Front_end.Node_mode() );
 		});
 		server.on("/gateway", []() {
 
@@ -138,17 +85,40 @@ void createWebServer(int webtype)
 
 }
 
-void drawFontFaceDemo() {
+void drawFontFaceDemo() 
+{
 	// Font Demo1
 	// create more fonts at http://oleddisplay.squix.ch/
-	display.setTextAlignment(TEXT_ALIGN_LEFT);
-	display.setFont(ArialMT_Plain_16);
-	display.drawString(0, 0, "BW=");	display.drawString(50, 0, set_gw_bw);
-//	display.setFont(ArialMT_Plain_10);
-	display.drawString(0, 14, "Freq="); display.drawString(50, 14, set_gw_freq); display.drawString(90, 14, "Mhz");
-//	display.setFont(ArialMT_Plain_10);
-	display.drawString(0, 28, "SF="); display.drawString(50, 28, set_gw_sf);
-	display.drawString(0, 42, "Data length="); display.drawString(90, 42, set_gw_length);
+	if (set_gw_freq != 0 )
+	{
+		display.clear();
+		display.setTextAlignment(TEXT_ALIGN_LEFT);
+		display.setFont(ArialMT_Plain_16);
+		display.drawString(0, 0, "BW=");	display.drawString(50, 0, set_gw_bw);
+		//	display.setFont(ArialMT_Plain_10);
+		display.drawString(0, 14, "Freq="); display.drawString(50, 14, set_gw_freq); display.drawString(90, 14, "Mhz");
+		//	display.setFont(ArialMT_Plain_10);
+		display.drawString(0, 28, "SF="); display.drawString(50, 28, set_gw_sf);
+		display.drawString(0, 42, "<Gateway>"); display.drawString(90, 42, set_gw_length);
+
+	}
+	if (set_node_freq != 0)
+	{
+		display.clear();
+		display.setTextAlignment(TEXT_ALIGN_LEFT);
+		display.setFont(ArialMT_Plain_16);
+		display.drawString(0, 0, "BW=");	display.drawString(50, 0, set_node_bw);
+		//	display.setFont(ArialMT_Plain_10);
+		display.drawString(0, 14, "Freq="); display.drawString(50, 14, set_node_freq); display.drawString(90, 14, "Mhz");
+		//	display.setFont(ArialMT_Plain_10);
+		display.drawString(0, 28, "SF="); display.drawString(50, 28, set_node_sf);
+		display.drawString(0, 42, "Data length="); display.drawString(90, 42, set_node_length);
+
+	}
+	else
+	{
+		//display.drawString(0, 0, "Waiting...");
+	}
 }
 
 void loop() {
